@@ -1,0 +1,198 @@
+:root {
+    /* Colores principales */
+    --color-primary: #C1A87D;
+    --color-primary-light: #D4AF37;
+    --color-primary-dark: #9A845C;
+    --color-secondary: #2C3E50;
+    
+    /* Paleta neutral */
+    --color-white: #FFFFFF;
+    --color-black: #1A1A1A;
+    --color-gray-200: #E9ECEF;
+    --color-gray-300: #DEE2E6;
+    --color-gray-400: #CED4DA;
+    
+    /* Efectos */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+    
+    /* Tipografía */
+    --font-primary: 'Montserrat', sans-serif;
+    --font-secondary: 'Playfair Display', serif;
+}
+
+/* Contenedor principal */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-black));
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de fondo */
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('path/to/luxury-pattern.png') repeat;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+/* Formulario */
+.login-form {
+    background: var(--color-white);
+    padding: 3rem;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+    box-shadow: var(--shadow-lg);
+    animation: formAppear 0.6s ease-out;
+}
+
+/* Logo y título */
+.login-form h2 {
+    font-family: var(--font-secondary);
+    text-align: center;
+    color: var(--color-secondary);
+    margin-bottom: 2.5rem;
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.login-form h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, var(--color-primary), var(--color-primary-light));
+    border-radius: 2px;
+}
+
+/* Campos del formulario */
+.form-group {
+    position: relative;
+    margin-bottom: 1.8rem;
+}
+
+.form-group i {
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gray-400);
+    transition: color 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    border: 2px solid var(--color-gray-200);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    transition: all 0.3s ease;
+    background: var(--color-white);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(193, 168, 125, 0.1);
+}
+
+.form-group input:focus + i {
+    color: var(--color-primary);
+}
+
+/* Botón de envío */
+button[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    color: var(--color-white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(193, 168, 125, 0.3);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Animaciones */
+@keyframes formAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 1rem;
+    }
+    
+    .login-form {
+        padding: 2rem;
+    }
+    
+    .login-form h2 {
+        font-size: 1.8rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    button[type="submit"] {
+        padding: 0.9rem;
+    }
+}
+
+/* Efectos de hover en los campos */
+.form-group:hover input {
+    border-color: var(--color-gray-300);
+}
+
+/* Efecto de autocompletado personalizado */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--color-black);
+    -webkit-box-shadow: 0 0 0px 1000px var(--color-white) inset;
+    transition: background-color 5000s ease-in-out 0s;
+}

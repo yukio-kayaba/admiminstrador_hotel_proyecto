@@ -1,0 +1,347 @@
+/* Variables y configuración global */
+:root {
+    /* Colores principales */
+    --color-primary: #C1A87D;
+    --color-primary-light: #D4AF37;
+    --color-primary-dark: #9A845C;
+    --color-secondary: #2C3E50;
+    
+    /* Paleta neutral */
+    --color-bg: #F8F9FA;
+    --color-white: #FFFFFF;
+    --color-black: #1A1A1A;
+    --color-gray-100: #F8F9FA;
+    --color-gray-200: #E9ECEF;
+    --color-gray-300: #DEE2E6;
+    --color-gray-500: #ADB5BD;
+    
+    /* Estados */
+    --color-success: #28A745;
+    --color-warning: #FFC107;
+    --color-danger: #DC3545;
+    
+    /* Dimensiones */
+    --sidebar-width: 280px;
+    --header-height: 80px;
+    
+    /* Sombras */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    
+    /* Tipografía */
+    --font-primary: 'Montserrat', sans-serif;
+    --font-secondary: 'Playfair Display', serif;
+    
+    /* Transiciones */
+    --transition: all 0.3s ease;
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-bg);
+    color: var(--color-black);
+    line-height: 1.6;
+}
+
+/* Layout Principal */
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--color-black);
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    transition: var(--transition);
+    box-shadow: var(--shadow-lg);
+}
+
+.brand {
+    padding: 2rem;
+    text-align: center;
+    color: var(--color-white);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.brand i {
+    font-size: 2.5rem;
+    color: var(--color-primary-light);
+    margin-bottom: 1rem;
+}
+
+.brand h2 {
+    font-family: var(--font-secondary);
+    font-size: 1.75rem;
+    letter-spacing: 2px;
+}
+
+.brand span {
+    font-size: 0.8rem;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* Navegación */
+.nav-section {
+    padding: 1.5rem 0;
+}
+
+.nav-section span {
+    display: block;
+    padding: 0 1.5rem;
+    font-size: 0.75rem;
+    color: var(--color-gray-500);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+}
+
+.sidebar-nav li {
+    margin: 0.25rem 1rem;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.sidebar-nav a {
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-gray-300);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.sidebar-nav li.active,
+.sidebar-nav li:hover {
+    background: rgba(193, 168, 125, 0.1);
+}
+
+.sidebar-nav li.active a {
+    color: var(--color-primary);
+}
+
+/* Contenido Principal */
+.main-content {
+    margin-left: var(--sidebar-width);
+    flex: 1;
+}
+
+/* Barra Superior */
+.top-nav {
+    background: var(--color-white);
+    padding: 0 2rem;
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Buscador */
+.search-bar {
+    position: relative;
+    width: 400px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 3rem;
+    border: 1px solid var(--color-gray-300);
+    border-radius: 8px;
+    background: var(--color-gray-100);
+    transition: var(--transition);
+}
+
+.search-bar i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gray-500);
+}
+
+/* Acciones y Perfil */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.action-button {
+    padding: 0.75rem 1.5rem;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.action-button:hover {
+    background: var(--color-primary-dark);
+}
+
+/* Contenido del Dashboard */
+.dashboard-content {
+    padding: 2rem;
+}
+
+.welcome-section {
+    margin-bottom: 2rem;
+}
+
+.welcome-section h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Tarjetas de Estadísticas */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--color-white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+}
+
+.progress-bar {
+    height: 4px;
+    background: var(--color-gray-200);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: var(--progress);
+    background: var(--color-primary);
+    border-radius: 2px;
+}
+
+/* Actividad Reciente */
+.activity-section {
+    background: var(--color-white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+/* Estilos para el perfil de usuario */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover; /* Esto asegura que la imagen cubra el espacio sin deformarse */
+    flex-shrink: 0; /* Evita que la imagen se encoja */
+    border: 2px solid var(--color-primary);
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info .name {
+    font-weight: 500;
+    color: var(--color-black);
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+
+.user-info .role {
+    font-size: 0.75rem;
+    color: var(--color-gray-500);
+}
+/* Responsive */
+@media (max-width: 1200px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    :root {
+        --sidebar-width: 80px;
+    }
+
+    .brand h2, 
+    .brand span,
+    .nav-section span,
+    .sidebar-nav a span {
+        display: none;
+    }
+
+    .sidebar-nav a {
+        justify-content: center;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-bar,
+    .action-button span {
+        display: none;
+    }
+
+    .dashboard-content {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-actions {
+        gap: 1rem;
+    }
+
+    .user-info {
+        display: none;
+    }
+}
