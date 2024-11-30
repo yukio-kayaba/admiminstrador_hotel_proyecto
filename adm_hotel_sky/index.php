@@ -14,6 +14,6 @@
 			ModeloControlador::error_pagina();
 		}
 	}else {
-		ModeloControlador::inicio();
+		ModeloControlador::loguin();
 	};
 ?>
