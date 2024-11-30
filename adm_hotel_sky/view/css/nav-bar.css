@@ -1,0 +1,54 @@
+:root {
+    --color-primary: #C1A87D;
+    --color-primary-light: #D4AF37;
+    --color-primary-dark: #9A845C;
+    --color-secondary: #2C3E50;
+    
+    --color-bg: #F8F9FA;
+    --color-white: #FFFFFF;
+    --color-black: #1A1A1A;
+    --color-gray-100: #F8F9FA;
+    --color-gray-200: #E9ECEF;
+    --color-gray-300: #DEE2E6;
+    --color-gray-500: #ADB5BD;
+    
+    --color-success: #28A745;
+    --color-warning: #FFC107;
+    --color-danger: #DC3545;
+    
+    --sidebar-width: 280px;
+    --header-height: 20vh;
+    
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    
+    --font-primary: 'Montserrat', sans-serif;
+    --font-secondary: 'Playfair Display', serif;
+    
+    --transition: all 0.3s ease;
+}
+
+.top-nav {
+    background: var(--color-white);
+    padding: 0 2rem;
+    height: var(--header-height);
+    display: flex;
+    position: sticky;
+    top: 0;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+}
+.nav-actions {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    z-index: 1;
+
+}

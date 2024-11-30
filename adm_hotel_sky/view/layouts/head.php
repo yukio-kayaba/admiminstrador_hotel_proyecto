@@ -11,5 +11,5 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     
     <link rel="stylesheet" href="view/css/panel.css">
-</head>
-<body>
+    <!-- <script src="path/to/chartjs/dist/chart.umd.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

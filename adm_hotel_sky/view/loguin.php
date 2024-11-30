@@ -1,7 +1,8 @@
 <?php $titulo = "VILLA || loguin"; ?>
 <?php include("view/layouts/head.php"); ?>
-<link rel="stylesheet" href="view/css/loguin.css">
-
+    <link rel="stylesheet" href="view/css/loguin.css">
+</head>
+<body>
 <div class="login-container">
     <div class="login-form">
         <h2>HOTEL VILLA</h2>

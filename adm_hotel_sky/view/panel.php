@@ -1,5 +1,14 @@
-<?php $titulo="VILLA|| Admin" ?>
+<?php 
+    $titulo="VILLA|| Admin";
+
+?>
+
 <?php require_once "layouts/head.php"; ?>
+
+    <link rel="stylesheet" href="<?php echo url; ?>/view/css/nav-bar.css">
+    <script src="<?php echo url;?>/view/js/panel_graficos.js" defer></script>
+</head>
+<body>
 <div class="admin-container">
     <!-- Sidebar -->
     <aside class="sidebar">
@@ -58,34 +67,7 @@
     <!-- Main Content -->
     <main class="main-content">
         <!-- Top Navigation -->
-        <header class="top-nav">
-            <div class="search-wrapper">
-                <div class="search-bar">
-                    <i class="fas fa-search"></i>
-                    <input type="search" placeholder="Buscar...">
-                </div>
-            </div>
-
-            <div class="nav-actions">
-                <button class="action-button">
-                    <i class="fas fa-plus"></i>
-                    <span>Nueva Reserva</span>
-                </button>
-
-                <div class="notifications">
-                    <i class="fas fa-bell"></i>
-                    <span class="badge">3</span>
-                </div>
-
-                <div class="user-profile">
-                    <img src="  https://imgs.search.brave.com/dR4fAJSp-ZGtGMQBLZk_rDtJEEXcxtGRuNo-LJatKPc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/Y2FuYWwyNi5jb20v/bWVkaWEvaW1hZ2Uv/MjAyNC8wNS8yNy82/MDUxODkuanBnP3M9/MSZhPTQwMTQ5Mw" alt="Admin">
-                    <div class="user-info">
-                        <span class="name">James Wilson</span>
-                        <span class="role">Hotel Manager</span>
-                    </div>
-                </div>
-            </div>
-        </header>
+        <?php include('./view/layouts/nav_bar.php'); ?>
 
         <!-- Dashboard Content -->
         <div class="dashboard-content">
@@ -96,21 +78,16 @@
             </div>
 
             <!-- Statistics -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <div class="stat-icon"><i class="fas fa-bed"></i></div>
-                        <i class="fas fa-ellipsis-v"></i>
+            <div class="stat-card flex flex-colum alig-center" >
+                <p>Reporte de Ventas Actuales</p>
+                <div class="reportes">
+                    <div class="stat-info">
+                        <h3>Avances de ventas de hoy</h3>
+                        <canvas id="ventas"  ></canvas>
                     </div>
                     <div class="stat-info">
-                        <h3>Ocupación</h3>
-                        <div class="stat-data">
-                            <p>24/30</p>
-                            <span class="trend positive">
-                                <i class="fas fa-arrow-up"></i>12.5%
-                            </span>
-                        </div>
-                        <div class="progress-bar" style="--progress: 80%"></div>
+                        <h3>Ventas de Hoy</h3>
+                        <canvas id="ingresos"></canvas>
                     </div>
                 </div>
             </div>
@@ -137,6 +114,18 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            
+            <div class="activity-section">
+                <div class="section-header">
+                    <h2>Reporte de Nuevos Mienbros</h2>
+                    <label class="filter-btn" for="">
+                        <input class="fas fa-filter" type="date" name="" id="">
+                    </label>
+                </div>
+                <div class="activity-list">
+                    <canvas id="myChart" width="400" height="400"></canvas>
                 </div>
             </div>
         </div>

@@ -143,16 +143,6 @@ body {
     flex: 1;
 }
 
-/* Barra Superior */
-.top-nav {
-    background: var(--color-white);
-    padding: 0 2rem;
-    height: var(--header-height);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: var(--shadow-sm);
-}
 
 /* Buscador */
 .search-bar {
@@ -178,11 +168,6 @@ body {
 }
 
 /* Acciones y Perfil */
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
 
 .action-button {
     padding: 0.75rem 1.5rem;
@@ -204,6 +189,13 @@ body {
 /* Contenido del Dashboard */
 .dashboard-content {
     padding: 2rem;
+    font-family: emoji;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: center;
+    gap: 10px;
 }
 
 .welcome-section {
@@ -228,6 +220,17 @@ body {
     padding: 1.5rem;
     border-radius: 12px;
     box-shadow: var(--shadow-md);
+    gap: 10px;
+}
+
+.flex{
+    display: flex;
+}
+.flex-colum{
+    flex-direction: column;
+}
+.alig-center{
+    align-items: center;
 }
 
 .progress-bar {
@@ -263,6 +266,23 @@ body {
     align-items: center;
     margin-bottom: 1.5rem;
 }
+/* estylos de reportes */
+
+.reportes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+} 
+.stat-info{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+/* fin de estilos de reportes */
 /* Estilos para el perfil de usuario */
 .user-profile {
     display: flex;
@@ -278,11 +298,6 @@ body {
     object-fit: cover; /* Esto asegura que la imagen cubra el espacio sin deformarse */
     flex-shrink: 0; /* Evita que la imagen se encoja */
     border: 2px solid var(--color-primary);
-}
-
-.user-info {
-    display: flex;
-    flex-direction: column;
 }
 
 .user-info .name {
