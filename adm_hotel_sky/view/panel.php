@@ -6,74 +6,34 @@
 <?php require_once "layouts/head.php"; ?>
 
     <link rel="stylesheet" href="<?php echo url; ?>/view/css/nav-bar.css">
+    
     <script src="<?php echo url;?>/view/js/panel_graficos.js" defer></script>
+    <!-- logica de responsive -->
+    <script src="<?php echo url;?>/view/js/menu-responsive.js" defer></script>
 </head>
 <body>
 <div class="admin-container">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <!-- Brand Section -->
-        <div class="sidebar-header">
-            <div class="brand">
-                <i class="fas fa-hotel"></i>
-                <h2>HOTEL VILLA</h2>
-                <span>EXPERIENCIA DE LUJO </span>
-            </div>
-        </div>
-        
-        <!-- Navigation -->
-        <nav class="sidebar-nav">
-            <!-- Main Section -->
-            <div class="nav-section">
-                <span>PRINCIPAL</span>
-                <ul>
-                    <li class="active">
-                        <a href="?vista=inicio"><i class="fas fa-tachometer-alt"></i>Vista General</a>
-                    </li>
-                </ul>
-            </div>
+    <!-- Agregar botón toggle -->
+    <button class="menu-toggle">
+    <i class="fa-solid fa-bars"></i>
+    </button>
 
-            <!-- Hotel Management -->
-            <div class="nav-section">
-                <span>GESTIÓN HOTELERA</span>
-                <ul>
-                    <li><a href="?vista=habitaciones"><i class="fas fa-bed"></i>Habitaciones</a></li>
-                    <li><a href="?vista=reservaciones"><i class="fas fa-calendar-alt"></i>Reservaciones</a></li>
-                    <li><a href="?vista=huespedes"><i class="fas fa-user-tie"></i>Huéspedes</a></li>
-                </ul>
-            </div>
+    <!-- Agregar overlay -->
+    <div class="sidebar-overlay"></div>
 
-            <!-- Services Section -->
-            <div class="nav-section">
-                <span>SERVICIOS</span>
-                <ul>
-                    <li><a href="?vista=restaurante"><i class="fas fa-utensils"></i>Restaurante</a></li>
-                    <li><a href="?vista=spa"><i class="fas fa-spa"></i>Spa & Wellness</a></li>
-                    <li><a href="?vista=eventos"><i class="fas fa-glass-cheers"></i>Eventos</a></li>
-                </ul>
-            </div>
-
-            <!-- Analysis Section -->
-            <div class="nav-section">
-                <span>ANÁLISIS</span>
-                <ul>
-                    <li><a href="?vista=reportes"><i class="fas fa-chart-line"></i>Reportes</a></li>
-                    <li><a href="?vista=finanzas"><i class="fas fa-dollar-sign"></i>Finanzas</a></li>
-                </ul>
-            </div>
-        </nav>
-    </aside>
+    <!-- navegacion izquierda -->
+    <?php include('./view/layouts/nav_var_izquierdo.php'); ?>
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Top Navigation -->
+        <!--navegacion superior -->
         <?php include('./view/layouts/nav_bar.php'); ?>
 
         <!-- Dashboard Content -->
         <div class="dashboard-content">
             <!-- Welcome Section -->
             <div class="welcome-section">
-                <h1>Bienvenido, James</h1>
+                <h1>Bienvenido, Roy</h1>
                 <p><?php echo date('l, d F Y'); ?></p>
             </div>
 
@@ -120,7 +80,7 @@
             <div class="activity-section">
                 <div class="section-header">
                     <h2>Reporte de Nuevos Mienbros</h2>
-                    <label class="filter-btn" for="">
+                    <label class="filter-btn">
                         <input class="fas fa-filter" type="date" name="" id="">
                     </label>
                 </div>

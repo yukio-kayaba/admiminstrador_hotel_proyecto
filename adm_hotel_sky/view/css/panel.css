@@ -9,7 +9,7 @@
     /* Paleta neutral */
     --color-bg: #F8F9FA;
     --color-white: #FFFFFF;
-    --color-black: #1A1A1A;
+    --color-black: #001446;
     --color-gray-100: #F8F9FA;
     --color-gray-200: #E9ECEF;
     --color-gray-300: #DEE2E6;
@@ -50,6 +50,43 @@ body {
     color: var(--color-black);
     line-height: 1.6;
 }
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1001;
+    background-color:  #001446;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--color-bg);
+    transition: var(--transition);
+}
+
+.menu-toggle.active {
+    left: 270px; /* Ajustar según el ancho de tu sidebar */
+}
+
+/* Estilos para el overlay */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 20, 0.5);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
 
 /* Layout Principal */
 .admin-container {
@@ -60,12 +97,13 @@ body {
 /* Sidebar */
 .sidebar {
     width: var(--sidebar-width);
-    background: var(--color-black);
+    background:#001446; ;
     position: fixed;
     height: 100vh;
     overflow-y: auto;
     transition: var(--transition);
     box-shadow: var(--shadow-lg);
+    z-index: 1000;
 }
 
 .brand {
@@ -324,17 +362,34 @@ body {
     :root {
         --sidebar-width: 80px;
     }
-
+    .menu-toggle {
+        display: block;
+    }
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
     .brand h2, 
     .brand span,
     .nav-section span,
     .sidebar-nav a span {
-        display: none;
+        display: block;
+    }
+    .sidebar{
+        transform: translateX(-100%);
+        transition: transform 0.4s ease;
     }
 
+    .sidebar.active {
+        transform: translateX(0);
+    }
     .sidebar-nav a {
         justify-content: center;
         padding: 1rem;
+    }
+
+    .main-content.sidebar-active {
+        padding-left: var(--sidebar-width);
     }
 }
 
@@ -352,7 +407,15 @@ body {
         padding: 1rem;
     }
 }
+@media (max-width: 576px) {
+    .sidebar {
+        width: 85%; /* Hacer el sidebar más ancho en móviles muy pequeños */
+    }
 
+    .menu-toggle.active {
+        left: calc(85% - 3rem);
+    }
+}
 @media (max-width: 480px) {
     .nav-actions {
         gap: 1rem;
