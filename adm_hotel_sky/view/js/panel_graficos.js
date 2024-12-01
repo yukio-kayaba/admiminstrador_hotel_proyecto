@@ -1,12 +1,12 @@
-const alterar_graficos = ()=>{
-    const ctx = document.getElementById('myChart').getContext('2d'); // Accede al contexto del canvas
+const alterar_graficos = (id,titulo,datos =[],valores = [])=>{
+    const ctx = document.getElementById(id).getContext('2d');
     const myChart = new Chart(ctx, {
-        type: 'bar', // Tipo de gráfico (bar, line, pie, etc.)
+        type: 'bar',
         data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June'], // Etiquetas del eje X
+            labels:datos,
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3], // Datos para el gráfico
+                label: titulo,
+                data: valores,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -37,19 +37,15 @@ const alterar_graficos = ()=>{
 
 };
 
-const graficos_redondeados = ()=>{
-    const elemento = document.getElementById('ventas').getContext('2d');
+const graficos_redondeados = (id,titulo,datos =[],valores = [])=>{
+    const elemento = document.getElementById(id).getContext('2d');
     const myChart = new Chart(elemento,{
         type:'polarArea',
         data:{
-            labels: [
-              'Registrados',
-              'Ventas',
-              'Reclamos'
-            ],
+            labels: datos,
             datasets: [{
-              label: '#de ventas',
-              data: [11, 16, 7],
+              label: titulo,
+              data: valores,
               backgroundColor: [
                 'rgb(255, 99, 132)',
                 'rgb(75, 192, 192)',
@@ -64,16 +60,16 @@ const graficos_redondeados = ()=>{
     });
 };
 
-const graficos_lineales = ()=>{
-    const datasetData = [12, -15, 35, 50, -25, 40];  // Ejemplo de datos
+const graficos_lineales = (id,titulo,datos,valores)=>{
+    const datasetData = valores;
 
-    const elemento = document.getElementById('ingresos').getContext('2d');
+    const elemento = document.getElementById(id).getContext('2d');
     const myChart = new Chart(elemento, {
         type: 'line', 
         data: {
-            labels: ['9pm', '10pm', '11pm', '12pm', '1am', '2am'],
+            labels: datos,
             datasets: [{
-                label: 'Dataset',  
+                label: titulo,  
                 data: datasetData, 
                 borderColor: 'rgb(255, 99, 132)', 
                 backgroundColor: 'rgba(255, 99, 132, 0.2)', 
@@ -93,6 +89,6 @@ const graficos_lineales = ()=>{
         }
     });
 }
-graficos_lineales();
-graficos_redondeados();
-alterar_graficos();
+graficos_lineales('ingresos','ventas del dia',['9am','10,pm','11pm'],[3,5,2]);
+graficos_redondeados('ventas','clientes ',['registrados','ventas','reclamos'],[20,10,5]);
+alterar_graficos('myChart','nuevo Mienbro',['enero','febrero','marzo'],[150,100,170]);

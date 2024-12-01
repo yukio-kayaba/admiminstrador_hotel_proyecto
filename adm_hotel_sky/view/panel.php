@@ -84,8 +84,8 @@
                         <input class="fas fa-filter" type="date" name="" id="">
                     </label>
                 </div>
-                <div class="activity-list">
-                    <canvas id="myChart" width="400" height="400"></canvas>
+                <div class="activity-list posicion_cuadro">
+                    <canvas id="myChart" ></canvas>
                 </div>
             </div>
         </div>

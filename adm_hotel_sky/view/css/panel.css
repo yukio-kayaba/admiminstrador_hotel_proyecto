@@ -318,7 +318,8 @@ body {
 .stat-info{
     display: flex;
     height: 90%;
-    width: 50%;
+    /* width: 50%; */
+    max-width: 1100px;
     flex-direction: column;
     align-items: center;
 }
@@ -350,6 +351,12 @@ body {
 .user-info .role {
     font-size: 0.75rem;
     color: var(--color-gray-500);
+}
+.posicion_cuadro{
+    /* width: 400px; */
+    max-height: 600px;
+    /* height: 300px; */
+
 }
 /* Responsive */
 @media (max-width: 1200px) {
@@ -390,6 +397,10 @@ body {
 
     .main-content.sidebar-active {
         padding-left: var(--sidebar-width);
+    }
+    .reportes{
+        flex-direction: column;
+        align-items: stretch;
     }
 }
 

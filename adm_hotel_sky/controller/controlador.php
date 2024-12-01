@@ -14,6 +14,10 @@ class ModeloControlador{
         require_once("./view/panel.php");
     }
 
+    static function archivo(){
+        require_once('./view/informacion_datos.php');
+    }
+
     static function error_pagina(){
         echo "Error 404: Página no encontrada";
     }
