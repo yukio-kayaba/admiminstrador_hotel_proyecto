@@ -1,6 +1,6 @@
 <?php 
     $titulo="VILLA|| Admin";
-
+    $fecha = Date('l, F j, Y');
 ?>
 
 <?php require_once "layouts/head.php"; ?>
@@ -33,8 +33,8 @@
         <div class="dashboard-content">
             <!-- Welcome Section -->
             <div class="welcome-section">
-                <h1>Bienvenido, Roy</h1>
-                <p><?php echo date('l, d F Y'); ?></p>
+                <h1>Bienvenido, <?php echo $_SESSION['nombre']; ?></h1>
+                <p><?php echo $fecha; ?></p>
             </div>
 
             <!-- Statistics -->

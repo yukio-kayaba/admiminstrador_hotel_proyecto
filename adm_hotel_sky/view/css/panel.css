@@ -313,7 +313,7 @@ body {
     justify-content: space-around;
     align-items: flex-start;
     width: 100%;
-    height: 500px;
+    /* height: 500px; */
 } 
 .stat-info{
     display: flex;

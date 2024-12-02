@@ -16,12 +16,12 @@ $(document).ready(function(){
             data:data,
             success:function(response){
                 if(response == "no_permitido"){
-                        
+                    $(".respuesta_control").html("usuario o cotra incorrectos");
                 }else if(response == "no_espacios" || response == "error"){
-
+                    $(".respuesta_control").html("usuario o contraseña incorrecto");
                 }else{
                     console.log(JSON.parse(response));
-
+                    $(".respuesta_control").html("datos correctos");
                     localStorage.setItem("datos",response);
                 }
             }

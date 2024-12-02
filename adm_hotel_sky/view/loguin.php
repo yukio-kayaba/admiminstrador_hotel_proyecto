@@ -20,7 +20,7 @@
                 </i>
                 <input id="contra" type="password" name="password" placeholder="Contraseña" required>
             </div>
-            <p>error</p>
+            <p class="respuesta_control"></p>
             <button id="enviar" type="submit">Iniciar Sesión</button>
         </form>
     </div>

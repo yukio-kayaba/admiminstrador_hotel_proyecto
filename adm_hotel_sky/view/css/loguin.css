@@ -58,6 +58,14 @@
     box-shadow: var(--shadow-lg);
     animation: formAppear 0.6s ease-out;
 }
+.login-form form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.login-form .respuesta_control{
+    color: #97030a;
+}
 
 /* Logo y título */
 .login-form h2 {

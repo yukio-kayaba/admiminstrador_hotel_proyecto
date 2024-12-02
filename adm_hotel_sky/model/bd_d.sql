@@ -38,3 +38,12 @@ END$$
 
 DELIMITER ;
 
+
+CREATE TABLE `bd_hotel`.`reclamos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_usuario` INT NULL,
+  `reclamo` VARCHAR(345) NULL,
+  `fecha` DATETIME NULL DEFAULT CURRENT_TIMESTAMP(),
+  PRIMARY KEY (`id`));
+
+
