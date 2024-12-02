@@ -19,7 +19,8 @@
                     $id_usuario = $descriptar[0]['id'];
                     session_start();
                     $_SESSION['id'] = $id_usuario;
-                    print_r($resultado);
+                    
+                    print($resultado);
                     return;
                 }
                 echo $resultado;

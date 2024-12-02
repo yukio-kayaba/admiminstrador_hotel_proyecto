@@ -1,6 +1,6 @@
 <?php $titulo = "VILLA || loguin"; ?>
 <?php include("view/layouts/head.php"); ?>
-    <link rel="stylesheet" href="view/css/loguin.css">
+    <link rel="stylesheet" href="<?php echo url;?>/view/css/loguin.css">
     <script src="<?php echo url;?>/view/js/login.js" defer></script>
 </head>
 <body>
@@ -20,6 +20,7 @@
                 </i>
                 <input id="contra" type="password" name="password" placeholder="Contraseña" required>
             </div>
+            <p>error</p>
             <button id="enviar" type="submit">Iniciar Sesión</button>
         </form>
     </div>

@@ -1,4 +1,5 @@
 <?php
-    session_start();
-    session_destroy($_SESSION['id']);
+    session_destroy();
+    $url_date = url;
+    header("Location:$url_date");
 ?>

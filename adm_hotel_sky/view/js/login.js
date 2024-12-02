@@ -15,8 +15,15 @@ $(document).ready(function(){
             type:"POST",
             data:data,
             success:function(response){
-                console.log(response);
-                
+                if(response == "no_permitido"){
+                        
+                }else if(response == "no_espacios" || response == "error"){
+
+                }else{
+                    console.log(JSON.parse(response));
+
+                    localStorage.setItem("datos",response);
+                }
             }
         })
     });
