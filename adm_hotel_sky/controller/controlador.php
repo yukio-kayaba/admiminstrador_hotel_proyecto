@@ -21,5 +21,8 @@ class ModeloControlador{
     static function error_pagina(){
         echo "Error 404: Página no encontrada";
     }
+    static function cerrar(){
+        require_once("./view/cerrar_secion.php");
+    }
 }
 ?>
