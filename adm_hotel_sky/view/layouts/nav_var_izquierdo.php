@@ -24,7 +24,7 @@
             <div class="nav-section">
                 <span>GESTIÓN HOTELERA</span>
                 <ul>
-                    <li><a href="panel/habitaciones"><i class="fas fa-bed"></i>Habitaciones</a></li>
+                    <li><a href="panel/habitaciones"><i class="fas fa-bed"></i>Habitaciones</a></li>  
                     <li><a href="panel/servicios"><i class="fas fa-calendar-alt"></i>Reservaciones</a></li>
                     <li><a href="?vista=huespedes"><i class="fas fa-user-tie"></i>Huéspedes</a></li>
                 </ul>

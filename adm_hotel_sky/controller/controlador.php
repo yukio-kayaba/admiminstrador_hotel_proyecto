@@ -17,6 +17,9 @@ class ModeloControlador{
     static function archivo(){
         require_once('./view/informacion_datos.php');
     }
+    static function habitaciones(){
+        require_once('./view/tabla.php');
+    }
 
     static function error_pagina(){
         echo "Error 404: Página no encontrada";
