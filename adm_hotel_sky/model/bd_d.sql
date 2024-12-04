@@ -47,3 +47,38 @@ CREATE TABLE `bd_hotel`.`reclamos` (
   PRIMARY KEY (`id`));
 
 
+
+
+DELIMITER $$
+CREATE PROCEDURE `VENTAS_DIARIAS_HORA` (FECHA_DATE DATE)
+BEGIN
+	select hour(fecha_reservacion) as hora,count(*) as fechas from registro_habitaciones where DATE(fecha_reservacion) = FECHA_DATE group by hour(fecha_reservacion) order by fechas; 
+END$$
+
+DELIMITER ;
+
+
+DELIMITER $$
+USE `bd_hotel`$$
+CREATE PROCEDURE `suma_reporte_urh` ()
+BEGIN
+	select sum(h.suma_users) as habitaciones , sum(u.suma_users) as usuarios,sum(r.suma_datos) as reclamos from reporte_habitaciones_dias h, 
+	reporte_reclamos_dias r, reporte_usuarios_dias u ;
+END$$
+
+DELIMITER ;
+
+
+DELIMITER $$
+USE `bd_hotel`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `suma_reporte_urh`(mes varchar(4))
+BEGIN
+	declare cant_h,cant_clientes,cant_reclamos integer;
+	set cant_h = (SELECT count(id_habitacion) FROM registro_habitaciones  where month(fecha_reservacion) = mes );
+    set cant_clientes = (SELECT count(id_user) as cant FROM usuarios_clientes where month(fecha_creacion) = mes);
+    set cant_reclamos = (select count(id) from reclamos where month(fecha) = "11");
+	select cant_h as total_habitacion,cant_clientes as total_clientes ,cant_reclamos as total_reclamos;
+   
+END$$
+
+DELIMITER ;

@@ -61,6 +61,41 @@ const graficos_redondeados = (id,titulo,datos =[],valores = [])=>{
     });
 };
 
+const linea_doble = (id,titulo,valores =[],valores2 = [] )=>{
+    const DATA_COUNT = 7;
+    const NUMBER_CFG = {count:DATA_COUNT,min:-100,max:100};
+    const labels = Utils.months({count:7});
+
+    const data = {
+        labels:labels,
+        datasets:[
+            {
+                label:"dataset 1",
+                data:Utils.numbers(NUMBER_CFG),
+            },
+            {
+                label:"dataset 2",
+                data
+            }
+        ]
+    };
+    const config = {
+        type:'line',
+        data:data,
+        options:{
+            responsive:true,
+            plugins:{
+                legend:{
+                    position:'top'
+                },
+                title:{
+                    display:true,
+                    text:"chart "
+                }
+            }
+        }
+    };
+}
 const graficos_lineales = (id,titulo,datos,valores)=>{
     const datasetData = valores;
 
@@ -162,7 +197,7 @@ $(document).ready(function(){
         });
     }
     cargar_datos();
-    setInterval(actualizar_datos,5000);
+    setInterval(actualizar_datos,15000);
 
     graficos_lineales('ingresos','ventas del dia',['9am','10,pm','11pm'],[3,5,2]);
     // graficos_redondeados('ventas','clientes ',['registrados','ventas','reclamos'],[20,10,5]);
