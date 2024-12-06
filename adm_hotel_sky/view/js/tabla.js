@@ -28,16 +28,35 @@ $(document).ready(function(){
                 document.getElementsByClassName('titulos_date')[0].innerHTML = valores_title;
                 let datos_subir = "";
                 valores.forEach(datos => {
-                    datos_subir = "<tr>"
-                    titulos.forEach(i => {
-                        if(i != "habitacionescol" && i != "enlaces"){
-                            valores_title += ` <th> ${datos[i]}</th>`;
+                    datos_subir += "<tr>"
+                    titulos.forEach(element => {
+                        if(element != "habitacionescol" && element != "enlaces"){
+                            if(element == 'disponibilidad'){
+                                datos_subir += `<td><span class="status-active">${datos[element]}</span></td>`;
+                            }else{
+                                datos_subir += ` <td> ${datos[element]}</td>`;
+
+                            }
                         }
+                        // console.log(element);
                     });
+                    datos_subir += `
+                        <td class="actions">
+                                <button class="btn-view" data-id="1">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-edit" data-id="1">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-delete" data-id="1">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                    `;
                     datos_subir += "</tr>"
                 });
-
-                // document.getElementsByClassName("datos_tabla_master")[0].innerHTML =datos_subir;
+                // console.log(datos_subir);
+                document.getElementsByClassName("datos_tabla_master")[0].innerHTML =datos_subir;
             }
         })
     }
