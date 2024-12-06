@@ -2,7 +2,18 @@
     require_once("model/consultas.php");
     $titulo1 = $_SESSION['opcion'];
 
-    
+    if(isset($_SESSION['id'])){
+        $acceso = new Consulta();
+        // $cabeceras = [
+        //     "id"=>$_SESSION['id'],
+        //     "id_token"=>$_SESSION["id_tokem"],
+        //     'tokem'=>$_SESSION['tokem']
+        // ];
+
+        $direccion = api_ruta."api/habitaciones";
+        $resultado = $acceso->CONSULTA_POST_DA($direccion,['limite'=>0]);
+        print_r($resultado);
+    }
 ?>
 <?php $titulo = "VILLA | Sistema $titulo1 "; ?>
 <?php include("layouts/head.php"); ?>
