@@ -1,25 +1,13 @@
 <?php
     require_once("model/consultas.php");
     $titulo1 = $_SESSION['opcion'];
-
-    if(isset($_SESSION['id'])){
-        $acceso = new Consulta();
-        // $cabeceras = [
-        //     "id"=>$_SESSION['id'],
-        //     "id_token"=>$_SESSION["id_tokem"],
-        //     'tokem'=>$_SESSION['tokem']
-        // ];
-
-        $direccion = api_ruta."api/habitaciones";
-        $resultado = $acceso->CONSULTA_POST_DA($direccion,['limite'=>0]);
-        print_r($resultado);
-    }
 ?>
 <?php $titulo = "VILLA | Sistema $titulo1 "; ?>
 <?php include("layouts/head.php"); ?>
     <link rel="stylesheet" href="<?php echo url; ?>/view/css/tabla.css">
    
     <script src="<?php echo url;?>/view/js/menu-responsive.js" defer></script>
+    <script src="<?php echo url;?>/view/js/tabla.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -44,17 +32,11 @@
             <div class="table-container">
                 <table class="reservation-table">
                     <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Huésped</th>
-                            <th>Habitación</th>
-                            <th>Fecha Entrada</th>
-                            <th>Fecha Salida</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
+                        <tr class="titulos_date">
+                            
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="datos_tabla_master">
                    
                         <tr>
                             <td>#001</td>

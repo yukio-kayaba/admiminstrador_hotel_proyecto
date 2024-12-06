@@ -1,3 +1,9 @@
+<?php
+    $valor_var = " ";
+    if(isset($_SESSION['opcion'])){
+        $valor_var = $_SESSION['opcion'];
+    }
+?>
 <aside class="sidebar">
         <!-- Brand Section -->
         <div class="sidebar-header">
@@ -24,9 +30,9 @@
             <div class="nav-section">
                 <span>GESTIÓN HOTELERA</span>
                 <ul>
-                    <li class="<?php if($_SESSION['opcion'] == "habitacion") echo "active"; ?>"><a href="habitaciones"><i class="fas fa-bed"></i>Habitaciones</a></li>  
-                    <li class="<?php if($_SESSION['opcion'] == "reservacion") echo "active"; ?>"><a href="reservaciones"><i class="fas fa-calendar-alt"></i>Reservaciones</a></li>
-                    <li class="<?php if($_SESSION['opcion'] == "huespedes") echo "active"; ?>" ><a href="huespedes"><i class="fas fa-user-tie"></i>Huéspedes</a></li>
+                    <li class="<?php if($valor_var == "habitacion") echo "active"; ?>"><a href="habitaciones"><i class="fas fa-bed"></i>Habitaciones</a></li>  
+                    <li class="<?php if($valor_var == "reservacion") echo "active"; ?>"><a href="reservaciones"><i class="fas fa-calendar-alt"></i>Reservaciones</a></li>
+                    <li class="<?php if($valor_var == "huespedes") echo "active"; ?>" ><a href="huespedes"><i class="fas fa-user-tie"></i>Huéspedes</a></li>
                 </ul>
             </div>
 
