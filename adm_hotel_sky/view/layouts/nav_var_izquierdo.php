@@ -14,8 +14,8 @@
             <div class="nav-section">
                 <span>PRINCIPAL</span>
                 <ul>
-                    <li class="active">
-                        <a href="?vista=inicio"><i class="fas fa-tachometer-alt"></i>Vista General</a>
+                    <li class="<?php if(!isset($_GET['vista'])) echo "active"; ?>">
+                        <a href="/"><i class="fas fa-tachometer-alt"></i>Vista General</a>
                     </li>
                 </ul>
             </div>
@@ -24,9 +24,9 @@
             <div class="nav-section">
                 <span>GESTIÓN HOTELERA</span>
                 <ul>
-                    <li><a href="panel/habitaciones"><i class="fas fa-bed"></i>Habitaciones</a></li>  
-                    <li><a href="panel/servicios"><i class="fas fa-calendar-alt"></i>Reservaciones</a></li>
-                    <li><a href="?vista=huespedes"><i class="fas fa-user-tie"></i>Huéspedes</a></li>
+                    <li class="<?php if($_SESSION['opcion'] == "habitacion") echo "active"; ?>"><a href="habitaciones"><i class="fas fa-bed"></i>Habitaciones</a></li>  
+                    <li class="<?php if($_SESSION['opcion'] == "reservacion") echo "active"; ?>"><a href="reservaciones"><i class="fas fa-calendar-alt"></i>Reservaciones</a></li>
+                    <li class="<?php if($_SESSION['opcion'] == "huespedes") echo "active"; ?>" ><a href="huespedes"><i class="fas fa-user-tie"></i>Huéspedes</a></li>
                 </ul>
             </div>
 

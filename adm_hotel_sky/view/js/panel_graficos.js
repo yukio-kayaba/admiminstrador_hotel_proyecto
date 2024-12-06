@@ -1,7 +1,9 @@
 var cuadro_datos;
+var myChart,data;
+var grafico_lineal;
 const alterar_graficos = (id,titulo,datos =[],valores = [])=>{
     const ctx = document.getElementById(id).getContext('2d');
-    const myChart = new Chart(ctx, {
+    myChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels:datos,
@@ -66,7 +68,7 @@ const linea_doble = (id,titulo,valores =[],valores2 = [] )=>{
     const NUMBER_CFG = {count:DATA_COUNT,min:-100,max:100};
     const labels = Utils.months({count:7});
 
-    const data = {
+    data = {
         labels:labels,
         datasets:[
             {
@@ -100,7 +102,7 @@ const graficos_lineales = (id,titulo,datos,valores)=>{
     const datasetData = valores;
 
     const elemento = document.getElementById(id).getContext('2d');
-    const myChart = new Chart(elemento, {
+    grafico_lineal = new Chart(elemento, {
         type: 'line', 
         data: {
             labels: datos,
@@ -127,6 +129,7 @@ const graficos_lineales = (id,titulo,datos,valores)=>{
 }
 
 $(document).ready(function(){
+    const fecha_datos = document.getElementById("fecha_reporte");
     function cargar_datos(){
 
         let fechaHoy = new Date();
@@ -151,12 +154,14 @@ $(document).ready(function(){
             },
             success: function (response) {
                 // console.log(response);
-                const valores = JSON.parse(response);
+                const valores = JSON.parse(response)[0];
+                const valores2 = JSON.parse(response)[1]
                 // console.log(valores);
                 let primer = (valores[0].habitaciones == null)? 0 :valores[0].habitaciones; 
                 let segundo = (valores[0].reporte == null)? 0:valores[0].reporte;
                 let tercero = (valores[0].usuario == null)? 0 : valores[0].usuario;
                 graficos_redondeados('ventas','clientes ',['registrados','ventas','reclamos'],[primer,segundo,tercero]);   
+                graficos_lineales('ingresos','ventas del dia',['9am','10pm','11pm'],valores2);
             }
         });
     }
@@ -184,23 +189,62 @@ $(document).ready(function(){
             },
             success: function (response) {
                 // console.log(response);
-                const valores = JSON.parse(response);
+                const valores = JSON.parse(response)[0];
+                const valores2 = JSON.parse(response)[1];
                 // console.log(valores);
                 let primer = (valores[0].habitaciones == null)? 0 :valores[0].habitaciones; 
                 let segundo = (valores[0].reporte == null)? 0:valores[0].reporte;
                 let tercero = (valores[0].usuario == null)? 0 : valores[0].usuario;
 
-                cuadro_datos.data.datasets[0].data = [primer,segundo,tercero];
+                cuadro_datos.data.datasets.data = [primer,segundo,tercero];
                 cuadro_datos.update();
+                
+                grafico_lineal.data.labels.data = valores2; 
+                grafico_lineal.update();
                 // graficos_redondeados('ventas','clientes ',['registrados','ventas','reclamos'],[primer,segundo,tercero]);   
             }
         });
     }
+
+    function obtner_datos_fecha(mess){
+        const datos = {
+            fecha:mess
+        }
+        $.ajax({
+            type: "post",
+            url: "http://localhost:4000/api/habitaciones/reporte_mensual",
+            data: datos,
+            beforeSend:function(xhr){
+                let datos = JSON.parse(localStorage.getItem("datos"));
+                xhr.setRequestHeader("id", datos[0].id);
+                xhr.setRequestHeader("id_token", datos[0].id_tokem);
+                xhr.setRequestHeader("token", datos[0].tokem);
+            },
+            success:function(respuesta){
+                // console.log(respuesta);
+                const valores = JSON.parse(respuesta)[0];
+                let elementos = [valores.total_habitacion,valores.total_clientes,valores.total_reclamos];  
+                myChart.data.datasets[0].data = elementos;
+                myChart.update();
+                // alterar_graficos('myChart','nuevo Mienbro',['total_habitaciones','clientes','reclamos'],elementos);
+
+            }
+        })
+    }
+
+    fecha_datos.addEventListener("change",()=>{
+        const fullDate = fecha_datos.value; 
+        const month = fullDate.split("-")[1];
+        obtner_datos_fecha(month);
+        // console.log(`valor : ${month}`);
+    });
+
+
+
     cargar_datos();
     setInterval(actualizar_datos,15000);
+    alterar_graficos('myChart','nuevo Mienbro',['total_habitaciones','clientes','reclamos'],[1,1,1]);
 
-    graficos_lineales('ingresos','ventas del dia',['9am','10,pm','11pm'],[3,5,2]);
     // graficos_redondeados('ventas','clientes ',['registrados','ventas','reclamos'],[20,10,5]);
-    alterar_graficos('myChart','nuevo Mienbro',['enero','febrero','marzo'],[150,100,170]);
 
 });

@@ -34,6 +34,8 @@
 			if(isset($segmentos[0])){
 				if(method_exists("ModeloControlador",$segmentos[0])){
 					ModeloControlador::{$segmentos[0]}();
+				}else{
+					ModeloControlador::error_pagina();
 				}
 			}else{
 				ModeloControlador::panel();

@@ -17,9 +17,21 @@ class ModeloControlador{
     static function archivo(){
         require_once('./view/informacion_datos.php');
     }
+
     static function habitaciones(){
+        $_SESSION['opcion'] = "habitacion";
         require_once('./view/tabla.php');
     }
+    static function reservaciones(){
+        $_SESSION['opcion'] = "reservacion";
+        require_once('./view/tabla.php');
+    }
+
+    static function huespedes(){
+        $_SESSION['opcion'] = "huespedes";
+        require_once('./view/tabla.php');
+    }
+
 
     static function error_pagina(){
         echo "Error 404: Página no encontrada";

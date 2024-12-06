@@ -81,7 +81,7 @@
                 <div class="section-header">
                     <h2>Reporte de Nuevos Mienbros</h2>
                     <label class="filter-btn">
-                        <input class="fas fa-filter" type="date" name="" id="">
+                        <input class="fas fa-filter" type="month" name="" id="fecha_reporte">
                     </label>
                 </div>
                 <div class="activity-list posicion_cuadro">

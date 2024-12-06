@@ -1,4 +1,10 @@
-<?php $titulo = "VILLA|SISTEMA DE REGISTROS"; ?>
+<?php
+    require_once("model/consultas.php");
+    $titulo1 = $_SESSION['opcion'];
+
+    
+?>
+<?php $titulo = "VILLA | Sistema $titulo1 "; ?>
 <?php include("layouts/head.php"); ?>
     <link rel="stylesheet" href="<?php echo url; ?>/view/css/tabla.css">
    
@@ -21,7 +27,7 @@
     <main class="main-content">
         <div class="dashboard-content">
             <div class="welcome-section2">
-                <h1>Gestión de Reservaciones</h1>
+                <h1>Gestión de <?php echo $titulo1; ?></h1>
             </div>
             
             <div class="table-container">

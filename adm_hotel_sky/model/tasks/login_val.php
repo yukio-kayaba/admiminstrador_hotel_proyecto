@@ -9,9 +9,11 @@
             $expresion1 = "/^[a-zA-Z0-9_áéíóúÁÉÍÓÚñÑçÇ\s]+$/";
             if(preg_match($expresion,$usuario) && preg_match($expresion1,$contra) ){
                 $consulta = new Consulta();
+                $userAgent = $_SERVER['HTTP_USER_AGENT'];
                 $valores = [
                     'correo'=>$usuario,
-                    'contra'=>$contra
+                    'contra'=>$contra,
+                    'ip'=>$userAgent
                 ];
                 $resultado = $consulta->CONSULTA_POST_DA("http://localhost:4000/api/habitaciones/login_adm",$valores);
                 if($resultado != "error usuarios" || $resultado != "error al enviar datos"){
@@ -20,6 +22,8 @@
                     session_start();
                     $_SESSION['id'] = $id_usuario;
                     $_SESSION['nombre'] = $descriptar[0]['nombre']; 
+                    $_SESSION['id_tokem'] = $descriptar[0]['id_tokem'];
+                    $_SESSION['tokem'] = $descriptar[0]['tokem'];  
                     print($resultado);
                     return;
                 }
