@@ -19,10 +19,10 @@
         </div>
 
         <div class="user-profile">
-            <img src="  https://imgs.search.brave.com/dR4fAJSp-ZGtGMQBLZk_rDtJEEXcxtGRuNo-LJatKPc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/Y2FuYWwyNi5jb20v/bWVkaWEvaW1hZ2Uv/MjAyNC8wNS8yNy82/MDUxODkuanBnP3M9/MSZhPTQwMTQ5Mw" alt="Admin">
+            <img src=" https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="Admin">
             <div class="user-info">
                 <span class="name"><?php echo $_SESSION['nombre']; ?></span>
-                <span class="role">Hotel Manager</span>
+                <span class="role">|ADMINISTRADOER</span>
             </div>
         </div>
     </div>
