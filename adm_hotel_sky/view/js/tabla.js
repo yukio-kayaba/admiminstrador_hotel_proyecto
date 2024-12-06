@@ -14,7 +14,7 @@ $(document).ready(function(){
                     return;
                 }
                 let valores = JSON.parse(respuesta);
-                console.log(valores);
+                // console.log(valores);
                 let titulos = Object.keys(valores[0]);
                 // console.log(titulos);
                 let valores_title = "";
@@ -27,6 +27,7 @@ $(document).ready(function(){
                 valores_title += ` <th>Opciones</th>`;
                 document.getElementsByClassName('titulos_date')[0].innerHTML = valores_title;
                 let datos_subir = "";
+                datos_global = valores;
                 valores.forEach(datos => {
                     datos_subir += "<tr>"
                     titulos.forEach(element => {

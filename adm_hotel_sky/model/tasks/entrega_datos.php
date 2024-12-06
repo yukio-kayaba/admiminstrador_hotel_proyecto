@@ -13,6 +13,8 @@
             
             $resultado = $acceso->CONSULTA_POST_DA($direccion,['limite'=>0]);
             print($resultado);
+        }else if(){
+            
         }
     }else{
         print("no");

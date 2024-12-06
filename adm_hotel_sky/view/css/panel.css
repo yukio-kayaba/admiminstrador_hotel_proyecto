@@ -229,6 +229,7 @@ body {
     padding: 2rem;
     font-family: emoji;
     display: flex;
+    height: 100vh;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: stretch;
