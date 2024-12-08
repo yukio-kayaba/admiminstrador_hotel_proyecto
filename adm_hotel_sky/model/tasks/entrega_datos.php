@@ -6,6 +6,7 @@
     if(isset($_POST['cantidad'])){
         $cant_datos = $_POST['cantidad'];
     }
+
     if(isset($_SESSION['id'])){
         $acceso = new Consulta();
         if($_SESSION['opcion'] == "habitacion"){
@@ -13,8 +14,20 @@
             
             $resultado = $acceso->CONSULTA_POST_DA($direccion,['limite'=>0]);
             print($resultado);
-        }else if(){
-            
+        }else if($_SESSION['opcion'] == "huespedes"){
+            $direccion = api_ruta."api/usuarios";
+            $valores = [
+                'id_user'=>$_SESSION['id'],
+                'tokem'=>$_SESSION['tokem'],
+                'id_tokem'=>$_SESSION['id_tokem']
+            ];
+            $body = [
+                'cantidad' => $cant_datos
+            ];
+            $resultado = $acceso->CONSULTA_POST_DA($direccion,$body,$valores);
+            print_r($resultado);
+        }else{
+            print_r("no");
         }
     }else{
         print("no");
