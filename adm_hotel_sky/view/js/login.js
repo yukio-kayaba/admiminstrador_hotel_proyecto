@@ -15,7 +15,7 @@ $(document).ready(function(){
             type:"POST",
             data:data,
             success:function(response){
-                if(response == "no_permitido"){
+                if(response == "no_permitido" || response == "no_correct"){
                     $(".respuesta_control").html("usuario o cotra incorrectos");
                 }else if(response == "no_espacios" || response == "error"){
                     $(".respuesta_control").html("usuario o contraseña incorrecto");

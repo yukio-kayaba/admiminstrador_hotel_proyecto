@@ -10,13 +10,15 @@
             if(preg_match($expresion,$usuario) && preg_match($expresion1,$contra) ){
                 $consulta = new Consulta();
                 $userAgent = $_SERVER['HTTP_USER_AGENT'];
+                $numero = rand(1, 150);
                 $valores = [
                     'correo'=>$usuario,
                     'contra'=>$contra,
-                    'ip'=>$userAgent
+                    'ip'=>$userAgent,
+                    'valor1'=>$numero
                 ];
                 $resultado = $consulta->CONSULTA_POST_DA("http://localhost:4000/api/habitaciones/login_adm",$valores);
-                if($resultado != "error usuarios" || $resultado != "error al enviar datos"){
+                if($resultado != "error al enviar datos" && $resultado != "error usuarios"){
                     $descriptar = json_decode($resultado,true);
                     $id_usuario = $descriptar[0]['id'];
                     session_start();
@@ -25,6 +27,9 @@
                     $_SESSION['id_tokem'] = $descriptar[0]['id_tokem'];
                     $_SESSION['tokem'] = $descriptar[0]['tokem'];  
                     print($resultado);
+                    return;
+                }else if($resultado != "error usuarios"){
+                    echo "no_correct";
                     return;
                 }
                 echo $resultado;

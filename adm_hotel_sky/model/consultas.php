@@ -54,15 +54,19 @@
                 // curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
                 // curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
                 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-                if (!$cabecera) {
-                    $cabecera = [
-                        'Content-Type: application/x-www-form-urlencoded'
-                    ];
+                
+                
+                $cabecera1 = ['Content-Type: application/x-www-form-urlencoded'];
+
+                // Agregar valores como cabeceras personalizadas
+                if ($cabecera && is_array($cabecera)) {
+                    foreach ($cabecera as $key => $value) {
+                        $cabecera1[] = "$key: $value";
+                    }
+                    curl_setopt($ch, CURLOPT_HTTPHEADER, $cabecera1);
                 }
-        
-                if ($cabecera) {
-                    curl_setopt($ch, CURLOPT_HTTPHEADER, $cabecera);
-                }
+
+
                 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
                 $response = curl_exec($ch);
                 if ($response === false) {
