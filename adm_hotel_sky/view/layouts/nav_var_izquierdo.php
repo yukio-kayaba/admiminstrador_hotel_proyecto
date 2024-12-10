@@ -51,7 +51,7 @@
                 <span>ANÁLISIS</span>
                 <ul>
                     <li><a href="?vista=reportes"><i class="fas fa-chart-line"></i>Reportes</a></li>
-                    <li><a href="?vista=finanzas"><i class="fas fa-dollar-sign"></i>Finanzas</a></li>
+                    <li><a href="cerrar"><i class="fas fa-dollar-sign"></i>Cerrar Sesion</a></li>
                 </ul>
             </div>
         </nav>

@@ -164,6 +164,14 @@ $(document).ready(function(){
             'imagenes':campos_fotos
         };
         
+        $.ajax({
+            type: "POST",
+            data:campos_datos,
+            url: "./model/tasks/procesar_datos_add.php",
+            success:function(respuesta){
+                console.log(respuesta);
+            }
+        });
         console.log(campos_datos);
     });
 
