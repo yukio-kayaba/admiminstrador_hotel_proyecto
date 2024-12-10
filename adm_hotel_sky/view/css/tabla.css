@@ -42,7 +42,7 @@
 
 /* Estados de reservación */
 .status-active,
-.status-pending {
+.status-pending,.status-inactive {
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 12px;
@@ -57,6 +57,10 @@
 .status-pending {
     background-color: #fff3cd;
     color: #ffc107;
+}
+.status-inactive{
+    background-color: #ffcdcd;
+    color: #ff0707;
 }
 
 /* Contenedor de botones de acción */

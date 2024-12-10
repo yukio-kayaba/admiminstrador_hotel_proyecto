@@ -33,7 +33,8 @@ $(document).ready(function(){
                     titulos.forEach(element => {
                         if(element != "habitacionescol" && element != "enlaces"){
                             if(element == 'disponibilidad'){
-                                datos_subir += `<td><span class="status-active">${datos[element]}</span></td>`;
+                                let estado = (datos[element] == "activo")?"status-active":(datos[element] == "inactivo")? "status-inactive":"status-pending"; 
+                                datos_subir += `<td><span class="${estado}">${datos[element]}</span></td>`;
                             }else{
                                 datos_subir += ` <td> ${datos[element]}</td>`;
 
@@ -43,10 +44,10 @@ $(document).ready(function(){
                     });
                     datos_subir += `
                         <td class="actions">
-                                <button class="btn-edit" data-id="1">
+                                <button name="${datos[titulos[0]]}" class="btn-edit boton_editar_datos" data-id="1">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <button class="btn-delete" data-id="1">
+                                <button name="${datos[titulos[0]]}" class="btn-delete boton_eliminar_datos" data-id="1">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </td>
@@ -59,6 +60,15 @@ $(document).ready(function(){
         })
     }
 
+    $(document).on("click",".boton_eliminar_datos",function(){
+        let objeto = $(this).attr("name");
+        console.log("clikeado eliminar"+objeto);
+    });
+
+    $(document).on("click",".boton_editar_datos",function(){
+        let objeto = $(this).attr("name");
+        console.log("cliekado en editar"+objeto);
+    });
 
     carga_valores(0);
 
