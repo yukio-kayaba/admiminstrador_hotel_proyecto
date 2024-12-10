@@ -1,4 +1,4 @@
-var datos_global,fotos_global;
+var datos_global,fotos_global,opcion_enviar;
 $(document).ready(function(){
     function carga_valores(cantidad){
         const datos = {
@@ -72,6 +72,8 @@ $(document).ready(function(){
         let posicion = this.dataset.id;
         console.log("cliekado en editar"+posicion);
         let contenedor = document.getElementById("contenedor_principal_pop");
+        document.getElementById("boton_enviar_datos").innerHTML = "Actualizar";
+        opcion_enviar = 1;
         let texto = "";
         let campos = Object.keys(datos_global[0]);
         campos.forEach(element => {
@@ -90,7 +92,15 @@ $(document).ready(function(){
             success:function(respuesta){
                 if(respuesta != "error" && respuesta.length > 5){
                     let valores = JSON.parse(respuesta);
-                    console.log(valores);
+                    let texto = "";
+                    // console.log(valores);
+                    valores.forEach(element => {
+                        texto += campo_fotos(element['url_imagen'],element['id_fotos']);
+                    });
+                    document.getElementById("fotos_enlaces").innerHTML = texto;
+                }else{
+                    document.getElementById("fotos_enlaces").innerHTML = "";
+
                 }
             }
         });
@@ -104,6 +114,7 @@ $(document).ready(function(){
     const cuerpo_pop_up = document.getElementById("cuerpo_pop_up");
     const boton_add = document.getElementById("boton_add");
     const boton_add_enlaces = document.getElementsByClassName("boton_add_enlaces")[0];
+    const boton_enviar_datos = document.getElementById("boton_enviar_datos");
     fondo_back_up.addEventListener("click",(e)=>{
         // e.stopPropagation(); 
         fondo_back_up.style.display = "none";
@@ -113,6 +124,7 @@ $(document).ready(function(){
     });
     boton_add.addEventListener("click",()=>{
         let contenedor = document.getElementById("contenedor_principal_pop");
+        opcion_enviar = 0;
         let texto = "";
         let campos = Object.keys(datos_global[0]);
         campos.forEach(element => {
@@ -120,6 +132,8 @@ $(document).ready(function(){
                 texto += etiquetas_datos(element);
             }
         });
+        document.getElementById("fotos_enlaces").innerHTML = "";
+        document.getElementById("boton_enviar_datos").innerHTML = "Enviar" ;
         contenedor.innerHTML = texto;
         fondo_back_up.style.display = "flex";
     });
@@ -129,6 +143,30 @@ $(document).ready(function(){
         texto = campo_fotos();
         campo_fotos_enlaces.innerHTML += texto;
     });
+
+
+    boton_enviar_datos.addEventListener("click",()=>{
+        let campos = document.getElementsByClassName("input-control-date");
+        let fotos = document.getElementsByClassName("input-control-fotos");
+        let campos_fotos = [];
+        for (let j = 0; j < fotos.length; j++) {
+
+            let datos_aux = {
+                'id_foto':fotos[j].attributes.name.value,
+                "url":fotos[j].value
+            }
+            campos_fotos.push(datos_aux);
+        }
+
+        const campos_datos = {
+            'caracteristicas':campos[0].value,
+            'precio':campos[1].value,
+            'imagenes':campos_fotos
+        };
+        
+        console.log(campos_datos);
+    });
+
 });
 
 function etiquetas_datos(titulo,dato=null){
@@ -138,7 +176,7 @@ function etiquetas_datos(titulo,dato=null){
         <div class="field">
                 <label class="label">${titulo}</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-success" type="text" placeholder="Ingrese el ${titulo}" value="${(dato==null)?"":dato}">
+                    <input class="input-control-date input is-success" type="text" placeholder="Ingrese el ${titulo}" value="${(dato==null)?"":dato}">
                     <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                     </span>
@@ -151,11 +189,11 @@ function etiquetas_datos(titulo,dato=null){
     return texto;
 };
 
-function campo_fotos(enlace = null){
+function campo_fotos(enlace = null,posicion = null){
     let texto = "";
     texto = `
         <div class="control input_imagen">
-            <input class="input" type="text" placeholder="Ingrese el enlace" value="${(enlace != null)? enlace:""}">
+            <input name="${posicion}" class="input-control-fotos input" type="text" placeholder="Ingrese el enlace" value="${(enlace != null)? enlace:""}">
             <img width="150px" src="${(enlace != null)? enlace:'https://images.pexels.com/photos/12296667/pexels-photo-12296667.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}" alt="">
         </div>
     `;
