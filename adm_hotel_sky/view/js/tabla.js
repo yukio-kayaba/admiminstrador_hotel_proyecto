@@ -1,4 +1,4 @@
-var datos_global,fotos_global,opcion_enviar;
+var datos_global,fotos_global,opcion_enviar,pos_objeto;
 $(document).ready(function(){
     function carga_valores(cantidad){
         const datos = {
@@ -70,6 +70,7 @@ $(document).ready(function(){
     $(document).on("click",".boton_editar_datos",function(){
         let objeto = $(this).attr("name");
         let posicion = this.dataset.id;
+        pos_objeto = objeto;
         console.log("cliekado en editar"+posicion);
         let contenedor = document.getElementById("contenedor_principal_pop");
         document.getElementById("boton_enviar_datos").innerHTML = "Actualizar";
@@ -125,6 +126,7 @@ $(document).ready(function(){
     boton_add.addEventListener("click",()=>{
         let contenedor = document.getElementById("contenedor_principal_pop");
         opcion_enviar = 0;
+        // pos_objeto = 
         let texto = "";
         let campos = Object.keys(datos_global[0]);
         campos.forEach(element => {
@@ -157,22 +159,35 @@ $(document).ready(function(){
             }
             campos_fotos.push(datos_aux);
         }
-
-        const campos_datos = {
-            'caracteristicas':campos[0].value,
-            'precio':campos[1].value,
-            'imagenes':campos_fotos
-        };
-        
+        let datos_aux;
+        if(opcion_enviar == 0){
+            const campos_datos = {
+                'caracteristicas':campos[0].value,
+                'precio':campos[1].value,
+                'imagenes':campos_fotos
+            };
+            datos_aux = campos_datos;
+        }else{
+            const campos_datos = {
+                'id':pos_objeto,
+                'caracteristicas':campos[0].value,
+                'precio':campos[1].value,
+                'imagenes':campos_fotos
+            }
+            datos_aux = campos_datos;
+        }
+        console.log(datos_aux);
         $.ajax({
             type: "POST",
-            data:campos_datos,
+            data:datos_aux,
             url: "./model/tasks/procesar_datos_add.php",
             success:function(respuesta){
                 console.log(respuesta);
+                if(respuesta == 'actualizado' || respuesta == 'hola'){
+                    location.reload();
+                }
             }
         });
-        console.log(campos_datos);
     });
 
 });
