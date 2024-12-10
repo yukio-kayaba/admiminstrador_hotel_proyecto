@@ -1,4 +1,4 @@
-var datos_global;
+var datos_global,fotos_global;
 $(document).ready(function(){
     function carga_valores(cantidad){
         const datos = {
@@ -28,6 +28,7 @@ $(document).ready(function(){
                 document.getElementsByClassName('titulos_date')[0].innerHTML = valores_title;
                 let datos_subir = "";
                 datos_global = valores;
+                let posicion = 0;
                 valores.forEach(datos => {
                     datos_subir += "<tr>"
                     titulos.forEach(element => {
@@ -44,15 +45,16 @@ $(document).ready(function(){
                     });
                     datos_subir += `
                         <td class="actions">
-                                <button name="${datos[titulos[0]]}" class="btn-edit boton_editar_datos" data-id="1">
+                                <button data-id="${posicion}" name="${datos[titulos[0]]}" class="btn-edit boton_editar_datos" data-id="1">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <button name="${datos[titulos[0]]}" class="btn-delete boton_eliminar_datos" data-id="1">
+                                <button data-id="${posicion}" name="${datos[titulos[0]]}" class="btn-delete boton_eliminar_datos" data-id="1">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </td>
                     `;
-                    datos_subir += "</tr>"
+                    datos_subir += "</tr>";
+                    posicion ++;
                 });
                 // console.log(datos_subir);
                 document.getElementsByClassName("datos_tabla_master")[0].innerHTML =datos_subir;
@@ -67,7 +69,32 @@ $(document).ready(function(){
 
     $(document).on("click",".boton_editar_datos",function(){
         let objeto = $(this).attr("name");
-        console.log("cliekado en editar"+objeto);
+        let posicion = this.dataset.id;
+        console.log("cliekado en editar"+posicion);
+        let contenedor = document.getElementById("contenedor_principal_pop");
+        let texto = "";
+        let campos = Object.keys(datos_global[0]);
+        campos.forEach(element => {
+            if(element  == "caracteristicas" || element == "precio"){
+                texto += etiquetas_datos(element,datos_global[posicion][element]);
+            }
+        });
+        contenedor.innerHTML = texto;
+        const datos ={
+            "posicion":objeto
+        }
+        $.ajax({
+            type: "POST",
+            data:datos,
+            url: "./model/tasks/solicitar_imagenes.php",
+            success:function(respuesta){
+                if(respuesta != "error" && respuesta.length > 5){
+                    let valores = JSON.parse(respuesta);
+                    console.log(valores);
+                }
+            }
+        });
+        fondo_back_up.style.display = "flex";
     });
 
     carga_valores(0);

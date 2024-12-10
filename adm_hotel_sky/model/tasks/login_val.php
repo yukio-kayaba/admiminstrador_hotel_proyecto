@@ -1,5 +1,6 @@
 <?php
     // require_once("../config.php");
+    require_once("../../config.php");
     require_once("../consultas.php");
     if(isset($_POST['correo']) && isset($_POST['contra'])){
         $usuario = $_POST['correo'];
@@ -17,7 +18,8 @@
                     'ip'=>$userAgent,
                     'valor1'=>$numero
                 ];
-                $resultado = $consulta->CONSULTA_POST_DA("http://localhost:4000/api/habitaciones/login_adm",$valores);
+                $ruta = api_ruta."api/habitaciones/login_adm";
+                $resultado = $consulta->CONSULTA_POST_DA($ruta,$valores);
                 if($resultado != "error al enviar datos" && $resultado != "error usuarios"){
                     $descriptar = json_decode($resultado,true);
                     $id_usuario = $descriptar[0]['id'];
